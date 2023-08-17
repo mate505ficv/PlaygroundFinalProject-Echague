@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buscar Cursos por Nombre</title>
+</head>
+<body>
+    <h1>Buscar Cursos por Nombre</h1>
+    <form method="get" action="">
+        {{ form.as_p }}
+        <button type="submit">Buscar</button>
+    </form>
+    
+    {% if cursos %}
+    <h2>Resultados de la búsqueda:</h2>
+    <ul>
+        {% for curso in cursos %}
+        <li>{{ curso.nombre }} - Comisión {{ curso.numero_comision }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
