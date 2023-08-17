@@ -3,6 +3,10 @@ from django.shortcuts import render, redirect
 from django.shortcuts import render, redirect
 from .forms import Alumno_forms, Profesor_forms, Curso_forms, UsuSearchForm
 from .models import Curso
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 
@@ -61,3 +65,30 @@ def buscarCursos(request):
             cursos= Curso.objects.filter(nombre__icontains=nombre)
 
     return render(request, 'buscarcurso.html', {'form': form, 'cursos': cursos})
+def login_request(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            usuario = form.cleaned_data.get('username')
+            contraseña = form.cleaned_data.get('password')
+            user = authenticate(username=usuario, password=contraseña)
+            if user is not None:
+                login(request, user)
+                return render(request, 'inicio. html', {"mensaje": "Bienvenido"})
+    else:
+        form = AuthenticationForm()
+    
+    return render(request, 'login.html', {'form': form})
+
+def register_request(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            usuario = form.cleaned_data['username']
+            contraseña = form.cleaned_data['password1']
+            form.save()
+            return render(request, "inicio.html", {"mensaje": "Usuario Creado   :)"})
+    else:
+        form = UserCreationForm()
+    
+    return render(request, "register.html", {"form": form})
