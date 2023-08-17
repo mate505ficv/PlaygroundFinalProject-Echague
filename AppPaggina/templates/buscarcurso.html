@@ -1,13 +1,21 @@
 <!DOCTYPE html>
+{% block content %}
+<script>
+    function goBack() {
+        window.history.back();
+    }
+    </script>
 <html>
 <head>
     <title>Buscar Cursos por Nombre</title>
 </head>
 <body>
+    
     <h1>Buscar Cursos por Nombre</h1>
     <form method="get" action="">
         {{ form.as_p }}
         <button type="submit">Buscar</button>
+        <button onclick="goBack()">Volver</button>
     </form>
     
     {% if cursos %}
@@ -20,3 +28,4 @@
     {% endif %}
 </body>
 </html>
+{% endblock %}

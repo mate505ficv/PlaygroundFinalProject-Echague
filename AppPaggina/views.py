@@ -9,12 +9,12 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-
+@login_required
 def alumno(request):
     if request.method == 'POST':
         alumno_formulario = Alumno_forms(request.POST)
         
-        if alumno_formulario.is_valid:
+        if alumno_formulario.is_valid():
             alumno_formulario.save()
             
             return redirect('/AppPaggina/')
@@ -22,12 +22,12 @@ def alumno(request):
         alumno_formulario = Alumno_forms()
 
     return render(request, 'alumno.html',{"alumno_formulario": alumno_formulario})
-
+@login_required
 def profesor(request):
     if request.method == 'POST':
         profesor_formulario = Profesor_forms(request.POST)
         
-        if profesor_formulario.is_valid:
+        if profesor_formulario.is_valid():
             profesor_formulario.save()
             
             return redirect('/AppPagina/')
@@ -36,7 +36,7 @@ def profesor(request):
     
     
     return render(request,'profesor.html',{"profesor_formulario":profesor_formulario})
-
+@login_required
 def cursos(request):
     if request.method == 'POST':
         cursos_formulario = Curso_forms(request.POST)
@@ -53,6 +53,7 @@ def cursos(request):
 def inicio(request):
     return render(request,'inicio.html')
 
+@login_required
 def buscarCursos(request):
     cursos = []
     form = UsuSearchForm(request.GET)
@@ -65,6 +66,8 @@ def buscarCursos(request):
             cursos= Curso.objects.filter(nombre__icontains=nombre)
 
     return render(request, 'buscarcurso.html', {'form': form, 'cursos': cursos})
+
+
 def login_request(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
@@ -74,7 +77,7 @@ def login_request(request):
             user = authenticate(username=usuario, password=contraseña)
             if user is not None:
                 login(request, user)
-                return render(request, 'inicio. html', {"mensaje": "Bienvenido"})
+                return render(request, 'inicio.html', {"mensaje": "Bienvenido"})
     else:
         form = AuthenticationForm()
     

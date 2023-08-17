@@ -1,10 +1,16 @@
 {% extends 'index.html' %}
 
 {% block content %}
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
   <h2>Register</h2>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Register</button>
+    <button onclick="goBack()">Volver</button>
   </form>
 {% endblock %}
