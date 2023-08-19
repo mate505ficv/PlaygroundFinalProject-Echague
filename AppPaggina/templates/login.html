@@ -1,17 +1,12 @@
-{% extends 'index.html' %}
+<!-- register.html -->
+{% extends 'inicio.html' %}
 
-{% block content %}
-<script>
-  function goBack() {
-      window.history.back();
-  }
-  </script>
-  <h2>Iniciar Sesión</h2>
+{% block contenido %}
+  <h2>Iniciar Sesion</h2>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Iniciar Sesión</button>
+    <button type="submit">Iniciar Sesion</button>
     <button onclick="goBack()">Volver</button>
   </form>
-  <a href="{% url 'AppPaggina:register' %}">¿No tienes una cuenta? Regístrate aquí.</a>
 {% endblock %}

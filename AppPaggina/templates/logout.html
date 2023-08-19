@@ -1,7 +1,8 @@
-{% extends 'index.html' %}
+<!-- logout.html -->
+{% extends 'inicio.html' %}
 
-{% block content %}
+{% block contenido %}
   <h2>Cerrar Sesión</h2>
   <p>Has cerrado sesión exitosamente.</p>
   <a href="{% url 'AppPaggina:login' %}">Iniciar sesión nuevamente</a>
-{% endblock %}
+{% endblock contenido %}

@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-{% block content %}
+<!-- buscar_cursos.html -->
+{% extends 'inicio.html' %}
+
+{% block contenido %}
 <script>
     function goBack() {
         window.history.back();
     }
-    </script>
+</script>
 <html>
 <head>
     <title>Buscar Cursos por Nombre</title>
 </head>
 <body>
-    
     <h1>Buscar Cursos por Nombre</h1>
     <form method="get" action="">
         {{ form.as_p }}
@@ -28,4 +29,4 @@
     {% endif %}
 </body>
 </html>
-{% endblock %}
+{% endblock contenido %}

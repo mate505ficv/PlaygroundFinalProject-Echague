@@ -1,11 +1,7 @@
-{% extends 'index.html' %}
+<!-- register.html -->
+{% extends 'inicio.html' %}
 
-{% block content %}
-<script>
-function goBack() {
-    window.history.back();
-}
-</script>
+{% block contenido %}
   <h2>Register</h2>
   <form method="post">
     {% csrf_token %}

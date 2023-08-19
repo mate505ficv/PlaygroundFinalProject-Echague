@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.shortcuts import render, redirect
 from .forms import Alumno_forms, Profesor_forms, Curso_forms, UsuSearchForm
-from .models import Curso
+from .models import Curso, Tarea
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, authenticate
 
@@ -72,6 +72,24 @@ def buscarCursos(request):
             cursos= Curso.objects.filter(nombre__icontains=nombre)
 
     return render(request, 'buscarcurso.html', {'form': form, 'cursos': cursos})
+
+def tarea(request):
+    if request.method == 'POST':
+        titulo = request.POST['titulo']
+        descripcion = request.POST['descripcion']
+        archivo = request.FILES['archivo']
+
+        tarea = Tarea.objects.create(
+        titulo=titulo,
+        descripcion=descripcion,
+        archivo=archivo,
+        )
+        
+        
+        # Puedes redirigir a donde quieras después de subir la tarea
+        return render(request, 'inicio.html')
+    else:
+        return render(request, 'tarea.html')
 
 
 def login_request(request):
