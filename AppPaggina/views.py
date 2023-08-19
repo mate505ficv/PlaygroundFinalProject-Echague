@@ -5,12 +5,14 @@ from .forms import Alumno_forms, Profesor_forms, Curso_forms, UsuSearchForm
 from .models import Curso
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
-@login_required
+
 def alumno(request):
+    if not request.user.is_authenticated:
+        return redirect('http://127.0.0.1:8000/AppPaggina/login/')
     if request.method == 'POST':
         alumno_formulario = Alumno_forms(request.POST)
         
@@ -22,8 +24,9 @@ def alumno(request):
         alumno_formulario = Alumno_forms()
 
     return render(request, 'alumno.html',{"alumno_formulario": alumno_formulario})
-@login_required
 def profesor(request):
+    if not request.user.is_authenticated:
+        return redirect('http://127.0.0.1:8000/AppPaggina/login/')
     if request.method == 'POST':
         profesor_formulario = Profesor_forms(request.POST)
         
@@ -36,8 +39,10 @@ def profesor(request):
     
     
     return render(request,'profesor.html',{"profesor_formulario":profesor_formulario})
-@login_required
+
 def cursos(request):
+    if not request.user.is_authenticated:
+        return redirect('http://127.0.0.1:8000/AppPaggina/login/')
     if request.method == 'POST':
         cursos_formulario = Curso_forms(request.POST)
         
@@ -53,8 +58,9 @@ def cursos(request):
 def inicio(request):
     return render(request,'inicio.html')
 
-@login_required
 def buscarCursos(request):
+    if not request.user.is_authenticated:
+        return redirect('http://127.0.0.1:8000/AppPaggina/login/')
     cursos = []
     form = UsuSearchForm(request.GET)
 
