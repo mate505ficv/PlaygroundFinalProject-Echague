@@ -1,0 +1,27 @@
+{% extends 'inicio.html' %}
+
+{% block titulo %}
+    <!-- Sobrescribe el título si es necesario -->
+    <h1 class="mb-5">Subir Tarea</h1>
+{% endblock titulo %}
+
+{% block contenido %}
+    <!-- Aquí va el contenido de la página -->
+    <h2>Subir Tarea</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="titulo">Título de la Tarea</label>
+            <input type="text" class="form-control" id="titulo" name="titulo" required>
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripción de la Tarea</label>
+            <textarea class="form-control" id="descripcion" name="descripcion" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="archivo">Archivo de la Tarea</label>
+            <input type="file" class="form-control-file" id="archivo" name="archivo" accept=".pdf, .docx, .txt" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Subir Tarea</button>
+    </form>
+{% endblock contenido %}

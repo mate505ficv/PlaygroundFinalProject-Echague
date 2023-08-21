@@ -1,0 +1,21 @@
+{% extends 'inicio.html' %}
+{% load static %}
+{%block titulo%}
+    <h1 class="mb-5">Editar Perfil</h1>
+{%endblock titulo%}
+{%block contenido%}
+    <h1>Formulario - Editar Perfil</h1>
+    <h1> de {{usuario}} </h1>
+
+    <form action="" method="POST">{% csrf_token %}
+        <table>
+            {{ miFormulario }}
+
+        </table>
+
+        <input type="submit", value="Enviar">
+        <button type='button'>
+            <a class="navbar-brand" href="{% url 'AppPaggina:CambiarContrasenia' %}">Cambiar Contraseña</a>
+        </button>
+    </form>
+{% endblock%}

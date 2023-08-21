@@ -1,0 +1,4 @@
+tuplas parentesis
+listas corchetes
+float tipo de numero flotante o decimal
+la base en toda la vida como en la programacion es estudiarlo

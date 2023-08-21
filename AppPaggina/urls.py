@@ -12,4 +12,6 @@ urlpatterns = [
     path('login/', views.login_request, name='login'),
     path('logout/', LogoutView.as_view(template_name= 'logout.html'), name='logout'),
     path('tarea/', views.tarea, name='tarea'),
-    ]
+    path('editarperfil/', views.editar_perfil, name="EditarPerfil"),    
+    path('cambiarcontrasenia/', views.CambiarContrasenia.as_view(), name="CambiarContrasenia"),
+]

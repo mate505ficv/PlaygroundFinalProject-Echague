@@ -18,20 +18,26 @@
         <link href="{% static 'css/styles.css'%}" rel="stylesheet" />
     </head>
     <body>
-        <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
                 <a class="navbar-brand" href="/AppPaggina/">Inicio</a>
-                <a class="navbar-brand" href="/AppPaggina/alumno">Crear Alumno</a>
-                <a class="navbar-brand" href="/AppPaggina/profesor">Crear Profesor</a>
-                <a class="navbar-brand" href="/AppPaggina/curso">Crear Cursos</a>
-                <a class="navbar-brand" href="/AppPaggina/buscar_curso">Buscar Cursos</a>
-                <a class="navbar-brand" href="/AppPaggina/register">Registrarse</a>
-                <a class="navbar-brand" href="/AppPaggina/login">Iniciar Sesion</a>
-                <a class="navbar-brand" href="/AppPaggina/logout">Logout</a>
-                <a class="navbar-brand" href="/AppPaggina/tarea">Tarea</a>
-
-
+                {% if user.is_authenticated %}
+                    {% if user.is_staff %}
+                        <a class="navbar-brand" href="/AppPaggina/alumno">Crear Alumno</a>
+                        <a class="navbar-brand" href="/AppPaggina/profesor">Crear Profesor</a>
+                    {% endif %}
+                    <a class="navbar-brand" href="/AppPaggina/alumno">Crear Alumno</a>
+                    <a class="navbar-brand" href="/AppPaggina/profesor">Crear Profesor</a>
+                    <a class="navbar-brand" href="/AppPaggina/curso">Crear Cursos</a>
+                    <a class="navbar-brand" href="/AppPaggina/buscar_curso">Buscar Cursos</a>
+                    <a class="navbar-brand" href="/AppPaggina/tarea">Tarea</a>
+                    <a class="navbar-brand" href="/AppPaggina/editarperfil">Editar Perfil</a>
+                    <a class="navbar-brand" href="{% url 'AppPaggina:logout' %}">Cerrar Sesión</a>
+                {% else %}
+                    <!-- El usuario no está autenticado, mostrar solo registro e inicio de sesión -->
+                    <a class="navbar-brand" href="/AppPaggina/register">Registrarse</a>
+                    <a class="navbar-brand" href="/AppPaggina/login">Iniciar Sesión</a>
+                {% endif %}
             </div>
         </nav>
         <!-- Masthead-->

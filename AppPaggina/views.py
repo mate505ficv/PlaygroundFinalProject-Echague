@@ -1,14 +1,39 @@
 from django.shortcuts import render, redirect
 # Create your views here.
 from django.shortcuts import render, redirect
-from .forms import Alumno_forms, Profesor_forms, Curso_forms, UsuSearchForm
+from .forms import Alumno_forms, Profesor_forms, Curso_forms, UsuSearchForm, UserEditForm
 from .models import Curso, Tarea
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import login, authenticate
-
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
+from django.contrib.auth import login, authenticate, update_session_auth_hash
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import View
 
 # Create your views here.
+class CambiarContrasenia(LoginRequiredMixin, PasswordChangeView, View):
+    def get(self, request):
+        form = PasswordChangeForm(request.user)
+        return render(request, 'cambiarcontrasenia.html', {'form': form})
 
+    def post(self, request):
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            return redirect('editarperfil/')
+        return render(request, 'cambiarcontrasenia.html', {'form': form})
+def editar_perfil(request):
+    user = request.user
+    if request.method == "POST":
+        miformulario = UserEditForm(request.POST, instance=request.user)
+
+        if miformulario.is_valid():
+            miformulario.save()
+
+            return redirect('/AppPaggina/')        
+    else:
+        miformulario = miformulario = UserEditForm(instance=request.user)
+        return render(request, 'editarperfil.html',{"miformulario": miformulario})
 
 def alumno(request):
     if not request.user.is_authenticated:
