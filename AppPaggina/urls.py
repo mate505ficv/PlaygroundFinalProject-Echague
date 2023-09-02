@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 from django.contrib.auth.views import LogoutView
+from django.conf import settings
+from django.conf.urls.static import static
 app_name = 'AppPaggina'
 urlpatterns = [
     path('alumno/', views.alumno, name='alumno'),
@@ -14,4 +16,8 @@ urlpatterns = [
     path('tarea/', views.tarea, name='tarea'),
     path('editarperfil/', views.editar_perfil, name="EditarPerfil"),    
     path('cambiarcontrasenia/', views.CambiarContrasenia.as_view(), name="CambiarContrasenia"),
+    path('aboutm/', views.aboutm, name="AboutMe")
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

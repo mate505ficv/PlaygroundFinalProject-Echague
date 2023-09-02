@@ -12,6 +12,8 @@ class Profesor_forms(forms.ModelForm):
         model = Profesor
         fields ='__all__'
         
+class aboutMe_forms(forms.ModelForm):
+    print("Hola")
 
 class Curso_forms(forms.ModelForm):
     class Meta:

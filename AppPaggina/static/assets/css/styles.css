@@ -272,6 +272,11 @@ pre {
   overflow: auto;
   font-size: 0.875em;
 }
+
+body {
+  font-family: 'Rubik', sans-serif;
+
+}
 pre code {
   font-size: inherit;
   color: inherit;
@@ -683,6 +688,19 @@ progress {
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-top: var(--bs-gutter-y);
 }
+.chavo p {
+
+  text-align: center;
+  font-size: 4rem;
+  color: #06357a;
+
+
+}
+.navbar-brand a{
+
+  padding: 1rem auto;  
+}
+
 
 .col {
   flex: 1 0 0%;

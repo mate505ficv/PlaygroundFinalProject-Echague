@@ -9,7 +9,15 @@ from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 
-# Create your views here.
+# Create your views here
+
+from django.http import HttpResponse
+
+def aboutm(request):
+    context = {
+    }
+    return render(request, 'aboutm.html', context)
+
 class CambiarContrasenia(LoginRequiredMixin, PasswordChangeView, View):
     def get(self, request):
         form = PasswordChangeForm(request.user)
@@ -24,7 +32,7 @@ class CambiarContrasenia(LoginRequiredMixin, PasswordChangeView, View):
         return render(request, 'cambiarcontrasenia.html', {'form': form})
 def editar_perfil(request):
     user = request.user
-    if request.method == "POST":
+    if request.method == "POST":   
         miformulario = UserEditForm(request.POST, instance=request.user)
 
         if miformulario.is_valid():
