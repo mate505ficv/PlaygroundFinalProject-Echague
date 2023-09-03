@@ -6,15 +6,16 @@
 {% endblock titulo %}
 
 {% block contenido %}
+
     <div class="contenido">
         <p class="chavo">
-            ¡Hola a todos! Tengo 14 años y soy un entusiasta de la programación. Actualmente, estoy explorando el emocionante mundo de la programación a través de un curso de Python y otro de desarrollo web. Mi curiosidad y dedicación me han llevado a embarcarme en este viaje de aprendizaje y creatividad.
-            Siendo un apasionado de la tecnología desde una edad temprana, me encontré con la programación y quedé cautivado por su poder para crear y transformar.
+            ¡Hola a todos! Tengo 14 años y soy un entusiasta de la programación. Actualmente, estoy explorando el emocionante mundo de la programación a través de un curso de Python y otro de desarrollo web. Mi curiosidad y dedicación me han llevado a embarcarme en este viaje de aprendizaje y creatividad. Siendo un apasionado de la tecnología desde una edad temprana, me encontré con la programación y quedé cautivado por su poder para crear y transformar.
         </p>
-        <a id="leer-mas" href="javascript:void(0);">Leer más</a>
+        <a id="leer-mas" href="/AppPaggina/aboutm/" onclick="toggleContenido();">Leer más</a>
         <div id="contenido-adicional" style="display: none;">
-          <p>Mi sueño es ser alguien en el mundo de la programacion y poder vivir de eso. Gracias por leer.</p>
+            <p>Mi sueño es ser alguien en el mundo de la programación y poder vivir de eso. Gracias por leer.</p>
         </div>
-      </div>
-      
+    </div>
+
+
 {% endblock %}

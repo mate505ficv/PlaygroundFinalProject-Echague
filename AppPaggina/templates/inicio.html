@@ -32,7 +32,7 @@
                     <a class="navbar-brand" href="/AppPaggina/aboutm">Sobre Mi</a>
                     <a class="navbar-brand" href="/AppPaggina/editarperfil">Editar Perfil</a>
                     <a class="navbar-brand" href="{% url 'AppPaggina:logout' %}">Cerrar Sesión</a>
-                    <!-- Avatar de Usuario -->
+                    <span class="navbar-brand"> Hola <strong>{{user.username}}</strong>!</span>
                     <img src="/media/avatares/1.png" alt="Avatar de Usuario">
                 {% else %}
                     <a class="navbar-brand" href="/AppPaggina/register">Registrarse</a>

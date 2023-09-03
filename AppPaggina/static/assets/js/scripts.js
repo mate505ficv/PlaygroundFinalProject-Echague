@@ -11,16 +11,14 @@ const contenidoAdicional = document.getElementById('contenido-adicional');
 
 // Agrega un controlador de eventos al enlace "Leer más"
 leerMas.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-  e.preventDefault(); // Evita que el enlace funcione como un enlace normal
-    console.log('Click en "Leer Mas"');
-  // Alterna la visibilidad del contenido adicional
-  if (contenidoAdicional.style.display === 'none' || contenidoAdicional.style.display === '') {
-    contenidoAdicional.style.display = 'block';
-    leerMas.innerText = 'Leer menos'; // Opcional: cambia el texto del enlace
-  } else {
-    contenidoAdicional.style.display = 'none';
-    leerMas.innerText = 'Leer más'; // Opcional: cambia el texto del enlace
-  }
+    e.preventDefault(); // Evita que el enlace funcione como un enlace normal
+
+    // Alterna la visibilidad del contenido adicional
+    if (contenidoAdicional.style.display === 'none' || contenidoAdicional.style.display === '') {
+        contenidoAdicional.style.display = 'block';
+        leerMas.innerText = 'Leer menos'; // Opcional: cambia el texto del enlace
+    } else {
+        contenidoAdicional.style.display = 'none';
+        leerMas.innerText = 'Leer más'; // Opcional: cambia el texto del enlace
+    }
 });
