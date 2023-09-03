@@ -125,5 +125,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # URL de inicio de sesión para redirigir usuarios no autenticados
 LOGIN_URL = 'login_request'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/media/avatares/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

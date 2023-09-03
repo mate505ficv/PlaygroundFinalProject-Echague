@@ -28,7 +28,7 @@ class CambiarContrasenia(LoginRequiredMixin, PasswordChangeView, View):
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)
-            return redirect('editarperfil/')
+            return redirect('/AppPaggina/')
         return render(request, 'cambiarcontrasenia.html', {'form': form})
 def editar_perfil(request):
     user = request.user
